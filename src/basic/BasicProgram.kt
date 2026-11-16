@@ -89,19 +89,7 @@ class BasicProgram {
         return result
     }
 
-    fun isPalindrome(text: String): Boolean {
-        var left = 0
-        var right = text.length - 1
 
-        while (left < right) {
-            if (text[left] != text[right]) return false
-
-            left++
-            right--
-        }
-
-        return true
-    }
 
     fun isLeapYear(year: Int): Boolean {
         return year % 400 == 0 ||
@@ -136,33 +124,7 @@ class BasicProgram {
         return x
     }
 
-    fun isMirrorArray(nums: IntArray?): Boolean {
-        if (nums == null) return false
 
-        var left = 0
-        var right = nums.size - 1
 
-        while (left < right) {
-            if (nums[left] != nums[right]) return false
 
-            left++
-            right--
-        }
-
-        return true
-    }
-
-    fun countCharacter(text: String?, target: Char): Int {
-        if (text == null) return 0
-
-        var count = 0
-
-        for (i in text.indices) {
-            if (text[i] == target) {
-                count++
-            }
-        }
-
-        return count
-    }
 }

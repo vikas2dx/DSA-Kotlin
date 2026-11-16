@@ -2,6 +2,22 @@ package arrays
 
 class ArrayPrograms {
 
+
+    fun isMirrorArray(nums: IntArray?): Boolean {
+        if (nums == null) return false
+
+        var left = 0
+        var right = nums.size - 1
+
+        while (left < right) {
+            if (nums[left] != nums[right]) return false
+
+            left++
+            right--
+        }
+
+        return true
+    }
     // Find Second-Largest Number
     fun secondLargestNumber(nums: IntArray?): Int {
         require(nums != null && nums.size >= 2) {
