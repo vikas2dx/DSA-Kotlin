@@ -18,6 +18,7 @@ class ArrayPrograms {
 
         return true
     }
+
     // Find Second-Largest Number
     fun secondLargestNumber(nums: IntArray?): Int {
         require(nums != null && nums.size >= 2) {
@@ -64,7 +65,7 @@ class ArrayPrograms {
 
         var slow = 0
 
-        for (fast in 1..< nums.size) {
+        for (fast in 1..<nums.size) {
             if (nums[fast] != nums[slow]) {
                 slow++
                 nums[slow] = nums[fast]
@@ -100,7 +101,7 @@ class ArrayPrograms {
 
         return maxSum
     }
-
+    
     // Kadane's Algorithm: Find Maximum Subarray Sum
     fun maxSumSubArrayKadane(nums: IntArray?): Int {
         require(nums != null && nums.isNotEmpty()) {
@@ -111,11 +112,17 @@ class ArrayPrograms {
         var currentSum = nums[0]
 
         for (i in 1..<nums.size) {
-            currentSum = maxOf(currentSum + nums[i], nums[i])
+            currentSum = if (currentSum + nums[i] > nums[i]) {
+                currentSum + nums[i]
+            } else {
+                nums[i]
+            }
 
             if (currentSum > maxSum) {
                 maxSum = currentSum
             }
+
+
         }
 
         return maxSum
