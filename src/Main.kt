@@ -1,5 +1,5 @@
-import Strings.StringsProgram
 import searching.SearchingProgram
+import strings.StringsProgram
 
 fun main() {
 
