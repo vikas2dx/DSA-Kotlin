@@ -1,11 +1,18 @@
-import arrays.ArrayPrograms
-import sorting.SortingProgram
+import Strings.StringsProgram
+import searching.SearchingProgram
 
 fun main() {
 
-    val programs = SortingProgram()
+    val programs = SearchingProgram()
 
-    val nums = intArrayOf(1, 2, -9, 1, 2)
-    programs.bubbleSort(nums)
-    println(nums.contentToString())
+    val nums = intArrayOf(3, 9, 10, 27, 38, 43, 82)
+
+
+    val stringsProgram = StringsProgram()
+
+    val s = "vikassingh"
+
+    println(stringsProgram.lengthOfLongestSubstring(s))
+
+
 }

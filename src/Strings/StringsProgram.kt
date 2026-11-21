@@ -53,8 +53,7 @@ class StringsProgram {
     }
 
 
-
-  //Frequency map
+    //Frequency map
     fun findFirstNonRepeatingChar(str: String): Char? {
         val frequencyMap = HashMap<Char, Int>()
 
@@ -71,5 +70,37 @@ class StringsProgram {
         }
 
         return null
+    }
+
+    /**
+     * Finds the length of the longest substring without duplicate characters
+     * using the Sliding Window technique with a HashMap.
+     */
+    fun lengthOfLongestSubstring(s: String): Int {
+        var left = 0
+        var maxLength = 0
+
+        var lastSeenIndex = HashMap<Char, Int>()
+
+        for (right in s.indices) {
+            val currentChar = s[right]
+
+            // If the character was already seen inside the current window,
+            // jump the left pointer just past its previous occurrence
+            if (currentChar in lastSeenIndex) {
+                val prevIndex = lastSeenIndex[currentChar]!!
+
+                if (prevIndex >= left) {
+                    left = prevIndex + 1
+                }
+            }
+
+            lastSeenIndex[currentChar] = right
+
+            maxLength = maxOf(maxLength, right - left + 1)
+        }
+
+
+        return maxLength
     }
 }
