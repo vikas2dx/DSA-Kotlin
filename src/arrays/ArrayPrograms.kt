@@ -101,7 +101,7 @@ class ArrayPrograms {
 
         return maxSum
     }
-    
+
     // Kadane's Algorithm: Find Maximum Subarray Sum
     fun maxSumSubArrayKadane(nums: IntArray?): Int {
         require(nums != null && nums.isNotEmpty()) {
@@ -149,7 +149,7 @@ class ArrayPrograms {
         throw IllegalArgumentException("No two Sum solution")
     }
 
-    // Prefix Sum + HashMap: Subarray Sum Equals K
+    // Prefix Sum + HashMap: Subarray Sum Equals K :(nums = [1, 2, 3], k = 3)
     fun prefixSumSubArraySum(nums: IntArray, k: Int): Int {
         var count = 0
         var prefixSum = 0
@@ -162,11 +162,11 @@ class ArrayPrograms {
 
             val required = prefixSum - k
 
-            count += map.getOrDefault(required, 0)
+            count += map.getOrDefault(required, 0)  //3 - 3 = 0 count 1, then 6 - 3 = 3 count 2
 
-            map[prefixSum] = map.getOrDefault(prefixSum, 0) + 1
+            map[prefixSum] = map.getOrDefault(prefixSum, 0) + 1  //prefixSum Occurrence {0: 1, 1: 1, 3: 1, 6: 1}
         }
 
-        return count
+        return count // result: 2
     }
 }
