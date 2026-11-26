@@ -85,14 +85,17 @@ class StringsProgram {
             val currentChar = text[right]
 
             if (currentChar in mapCharsIndex) {
-                val prevIndex = mapCharsIndex.getValue(currentChar)
+                val prevIndex = mapCharsIndex.getValue(currentChar) //get index of previous exist char
                 if (prevIndex >= left) {
-                    left = prevIndex + 1
+                    left = prevIndex + 1  //skip the previous char and start new search with left
                 }
             }
 
             mapCharsIndex[currentChar] = right
-            maxLength = maxOf(maxLength, right - left + 1)
+            maxLength = maxOf(
+                maxLength,
+                (right - left) + 1
+            ) //because rightIndex=2 - leftIndex=0 = 2, but three chars exist at 0,1,2 index
         }
 
         return maxLength
