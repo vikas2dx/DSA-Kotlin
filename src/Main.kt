@@ -13,7 +13,7 @@ fun main() {
 
     val s = "vikassingh"
 
-    println(stringsProgram.lengthOfLongestSubstring(s))
+    println(stringsProgram.nonRepeatingLongSubStringChar(s))
 
 
     val list = SinglyLinkedList()

@@ -76,30 +76,24 @@ class StringsProgram {
      * Finds the length of the longest substring without duplicate characters
      * using the Sliding Window technique with a HashMap.
      */
-    fun lengthOfLongestSubstring(s: String): Int {
+    fun nonRepeatingLongSubStringChar(text: String): Int {
         var left = 0
         var maxLength = 0
+        val mapCharsIndex = HashMap<Char, Int>()
 
-        var lastSeenIndex = HashMap<Char, Int>()
+        for (right in text.indices) {
+            val currentChar = text[right]
 
-        for (right in s.indices) {
-            val currentChar = s[right]
-
-            // If the character was already seen inside the current window,
-            // jump the left pointer just past its previous occurrence
-            if (currentChar in lastSeenIndex) {
-                val prevIndex = lastSeenIndex[currentChar]!!
-
+            if (currentChar in mapCharsIndex) {
+                val prevIndex = mapCharsIndex.getValue(currentChar)
                 if (prevIndex >= left) {
                     left = prevIndex + 1
                 }
             }
 
-            lastSeenIndex[currentChar] = right
-
+            mapCharsIndex[currentChar] = right
             maxLength = maxOf(maxLength, right - left + 1)
         }
-
 
         return maxLength
     }
